@@ -1,1 +1,134 @@
 @import 'normalize.less';
+
+@background-color:        #eff1f4;
+@border-color:            #d8d8d8;
+@header-background-color: #333537;
+@header-tagline-color:    #26b08f;
+@hover-color:             #ffffff;
+@hover-background-color:  #26b08f;
+@search-font:             "Courier New", Courier, monospace, serif;
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+body {
+  background: @background-color;
+}
+
+.header {
+  background-color: @header-background-color;
+  padding: 50px 0;
+  text-align: center;
+  width: 100%;
+
+  .logo {
+    margin-bottom: 30px;
+  }
+
+  .tagline {
+    color: @header-tagline-color;
+    font-family: Century Gothic, sans-serif;
+    font-size: 12px;
+    line-height: 0em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: normal;
+  }
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 720px;
+}
+
+.full-width {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.contained {
+  position: relative;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.search-bar {
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #444;
+  font-family: @search-font;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+  width: 100%;
+  background: #fff;
+
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-input-placeholder {
+     color: #aaa;
+     font-weight: normal;
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -13px;
+}
+.search-button {
+  border: 0;
+  height: 26px;
+  // padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #26b08f;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.search-suggestions {
+  background-color: #fff;
+  border: 1px solid @border-color;
+  font-family: @search-font;
+  margin: 5px 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 2px 4px rgba(100, 100, 100, 0.25);
+
+  li {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid @border-color;
+    }
+
+    // States
+    &:hover {
+      background-color: @hover-background-color;
+      color: @hover-color;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+.snippet {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid @border-color;
+  padding: 50px;
+  box-sizing: border-box;
+  white-space: pre-wrap;  
+}
