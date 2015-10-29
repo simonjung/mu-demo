@@ -21,6 +21,8 @@
     "koa": "^1.1.1",
     "koa-router": "^5.2.3",
     "koa-static": "^1.5.1",
+    "react": "^0.14.1",
+    "react-dom": "^0.14.1",
     "superagent": "^1.4.0"
   },
   "devDependencies": {
