@@ -4,6 +4,7 @@ import Button from './Button.jsx';
 import SearchBarList from './SearchBarList.jsx';
 import Snippet from './Snippet.jsx';
 import request from 'superagent';
+import {debounce} from '../utils/utils.js';
 
 const SearchPage = React.createClass({
   /**
@@ -73,22 +74,26 @@ const SearchPage = React.createClass({
     );
   },
 
-  /**
-   * Triggers when query changes
-   * @param  {string} value is the query
-   */
-  handleSearchQuery: function (value) {
+  getSongs: debounce(function(query) {
     const self = this;
-    this.setState({query: value});
     request
       .get('/songs')
-      .query({ q: value })
+      .query({ q: query })
       .end(function(err, res) {
         if (err) return console.error(err);
         self.setState({
           'songs': res.body || []
         });
       });
+  }, 200),
+
+  /**
+   * Triggers when query changes
+   * @param  {string} query is the query
+   */
+  handleSearchQuery: function (query) {
+    this.setState({query: query});
+    this.getSongs(query);
   },
 
   /**
