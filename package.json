@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/simonjung/mu-demo/issues"
   },
-  "homepage": "https://github.com/simonjung/mu-demo#readme"
+  "homepage": "https://github.com/simonjung/mu-demo#readme",
+  "dependencies": {
+    "koa": "^1.1.1",
+    "koa-router": "^5.2.3",
+    "koa-static": "^1.5.1",
+    "superagent": "^1.4.0"
+  },
+  "devDependencies": {}
 }
