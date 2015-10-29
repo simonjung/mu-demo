@@ -15,6 +15,7 @@ gulp.task('watch', () => {
   gulp.watch('client/index.html', ['copy:html']);
   gulp.watch('client/styles/**/*.less', ['build:less']);
   gulp.watch('client/assets/**/*', ['copy:assets']);
+  gulp.watch('client/app/**/*.jsx', ['build:jsx']);
 });
 
 /**
@@ -27,6 +28,25 @@ gulp.task('build:less', () => {
   return gulp.src('client/styles/bundle.less')
     .pipe(less())
     .pipe(dest);
+});
+
+/**
+ * Builds all .jsx file into a single bundled
+ * file and copies it into public folder
+ * Note: all classes and modules will be 'strict'
+ */
+gulp.task('build:jsx', _ => {
+  const dest = gulp.dest('server/public');
+
+  return browserify({
+    entries: 'client/app/app.jsx',
+    extensions: ['.jsx'],
+    debug: true
+  })
+  .transform(babelify)
+  .bundle()
+  .pipe(source('bundle.js'))
+  .pipe(dest);
 });
 
 /**
@@ -57,5 +77,5 @@ gulp.task('clean', () => {
 });
 
 gulp.task('copy', ['copy:html', 'copy:assets']);
-gulp.task('build', ['build:less']);
+gulp.task('build', ['build:less', 'build:jsx']);
 gulp.task('default', ['clean', 'build', 'copy']);
