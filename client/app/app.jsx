@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchPage from './components/SearchPage.jsx';
+import SongSearch from './songsearch/SongSearch.jsx';
 
 ReactDOM.render(
-  <SearchPage />,
+  <SongSearch />,
   document.getElementById('app')
 );

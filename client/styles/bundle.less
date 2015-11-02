@@ -113,14 +113,13 @@ body {
     &:not(:last-child) {
       border-bottom: 1px solid @border-color;
     }
-
-    // States
-    &:hover {
-      background-color: @hover-background-color;
-      color: @hover-color;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  }
+  // States
+  .selected {
+    background-color: @hover-background-color;
+    color: @hover-color;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
 

@@ -1,6 +1,23 @@
 'use strict';
+
+/**
+ * Composes functions from left-to-right
+ * @return {Function} a composed function
+ */
+exports.flow = function () {
+  const args = [].slice.call(arguments);
+
+  return function(comp) {
+    return args.reduce(function(last, fn) {
+      return fn.call(this, last);
+    }, comp);
+  }
+};
+
 /**
  * Debounce a function
+ * http://davidwalsh.name/javascript-debounce-function
+ * 
  * @param  {Function} func        is the delayed function
  * @param  {Number}   wait        is time in milliseconds
  * @param  {bool}     immediate   call before instead of after
@@ -9,6 +26,7 @@
  */
 exports.debounce = function(func, wait, immediate) {
   var timeout;
+
   return function() {
     var context = this, args = arguments;
     var later = function() {
